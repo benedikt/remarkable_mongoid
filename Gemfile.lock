@@ -1,0 +1,59 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activemodel (3.0.0.beta4)
+      activesupport (= 3.0.0.beta4)
+      builder (~> 2.1.2)
+      i18n (~> 0.4.1)
+    activesupport (3.0.0.beta4)
+    bourne (1.0)
+      mocha (= 0.9.8)
+    bson (1.0.3)
+    bson_ext (1.0.1)
+    builder (2.1.2)
+    columnize (0.3.1)
+    diff-lcs (1.1.2)
+    i18n (0.4.1)
+    linecache (0.43)
+    mocha (0.9.8)
+      rake
+    mongo (1.0.3)
+      bson (= 1.0.3)
+    mongoid (2.0.0.beta9)
+      activemodel (~> 3.0.0.beta)
+      bson (~> 1.0.3)
+      mongo (~> 1.0.3)
+      tzinfo (~> 0.3.22)
+      will_paginate (~> 3.0.pre)
+    rake (0.8.7)
+    remarkable (4.0.0.alpha4)
+      rspec (>= 2.0.0.alpha11)
+    remarkable_activemodel (4.0.0.alpha4)
+      remarkable (~> 4.0.0.alpha4)
+      rspec (>= 2.0.0.alpha11)
+    rspec (2.0.0.beta.16)
+      rspec-core (= 2.0.0.beta.16)
+      rspec-expectations (= 2.0.0.beta.16)
+      rspec-mocks (= 2.0.0.beta.16)
+    rspec-core (2.0.0.beta.16)
+    rspec-expectations (2.0.0.beta.16)
+      diff-lcs (>= 1.1.2)
+    rspec-mocks (2.0.0.beta.16)
+    ruby-debug (0.10.3)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.3.0)
+    ruby-debug-base (0.10.3)
+      linecache (>= 0.3)
+    tzinfo (0.3.22)
+    will_paginate (3.0.pre)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bourne (= 1.0)
+  bson_ext
+  mongoid (>= 2.0.0.beta9)
+  remarkable_activemodel (>= 4.0.0.alpha2)
+  rspec (= 2.0.0.beta.16)
+  ruby-debug

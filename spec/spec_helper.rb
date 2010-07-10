@@ -1,9 +1,11 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+require 'ruby-debug'
 require 'remarkable-mongoid'
-require 'spec'
-require 'spec/autorun'
+require 'mongoid'
+require 'rspec'
+require 'rspec/autorun'
 
-Spec::Runner.configure do |config|
-  
+RSpec.configure do |config|
+  config.mock_with :mocha
 end
