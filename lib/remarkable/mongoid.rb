@@ -4,8 +4,8 @@ module Remarkable
 end
 
 require 'remarkable/active_model'
-require 'remarkable_mongoid/associations'
-require 'remarkable_mongoid/validate_uniqueness_of'
+require 'remarkable/mongoid/associations'
+require 'remarkable/mongoid/validate_uniqueness_of'
 
 if defined?(RSpec) # RSpec 2.x
   RSpec.configure do |config|

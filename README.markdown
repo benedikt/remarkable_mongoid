@@ -19,6 +19,8 @@ Validations
 
 ## Usage
 
+    require 'remarkable/mongoid'
+
     describe Book do
       it { should reference_one :author }
     end
