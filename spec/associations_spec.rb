@@ -115,4 +115,20 @@ describe 'Mongoid Associations' do
       end
     end
   end
+  
+  context 'messages' do
+    before do
+      @association_matcher = Remarkable::Mongoid::Matchers::AssociationMatcher.new(:test, "Some::Test")
+    end
+    
+    describe 'description' do
+      subject { @association_matcher.description }
+      it { should == "has Test association :test" }
+    end
+    
+    describe 'failure_message_for_should' do
+      subject { @association_matcher.failure_message_for_should }
+      it { should == "\nTest association failure\nExpected: 'test'"}
+    end
+  end
 end

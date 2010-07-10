@@ -38,19 +38,19 @@ module Remarkable::Mongoid
         a.detect { |k| k.first == attr } != nil
       end
 
-      # def description
-      #   "has #{humanized_association} association :#{attr}"
-      # end
-      # 
-      # def failure_message_for_should
-      #   "\n#{humanized_association} association failure\nExpected: '#{attr}'"
-      # end
-      # 
-      # private
-      # 
-      # def humanized_association
-      #   association_type.to_s.split('::').last
-      # end
+      def description
+        "has #{humanized_association} association :#{attr}"
+      end
+      
+      def failure_message_for_should
+        "\n#{humanized_association} association failure\nExpected: '#{attr}'"
+      end
+      
+      private
+      
+      def humanized_association
+        association_type.to_s.split('::').last
+      end
     end
   end
 end
