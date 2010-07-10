@@ -13,6 +13,9 @@ tmtags
 ## VIM
 *.swp
 
+## BUNDLER
+Gemfile.lock
+
 ## PROJECT::GENERAL
 coverage
 rdoc
