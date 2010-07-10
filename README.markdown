@@ -17,6 +17,10 @@ Validations
 * validates_uniqueness_of
 * All ActiveModel validations from [Remarkable::ActiveModel](http://github.com/remarkable/remarkable/tree/master/remarkable_activemodel)
 
+## Installation
+
+    gem install remarkable_mongoid
+
 ## Usage
 
     require 'remarkable/mongoid'
