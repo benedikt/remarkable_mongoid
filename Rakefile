@@ -12,6 +12,7 @@ begin
     gem.authors     = ["Brian Cardarella"]
     gem.files       = Dir.glob("lib/**/*") + %w(LICENSE README.markdown)
     gem.test_files  = []
+    gem.add_dependency 'remarkable_activemodel', '>=4.0.0.alpha2'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
