@@ -3,5 +3,6 @@ module Remarkable
   end
 end
 
-require 'remarkable-mongoid/associations'
 require 'remarkable/active_model'
+require 'remarkable-mongoid/associations'
+require 'remarkable-mongoid/validate_uniqueness_of'
