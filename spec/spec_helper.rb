@@ -5,7 +5,7 @@ Bundler.setup
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'ruby-debug'
-require 'remarkable-mongoid'
+require 'remarkable_mongoid'
 require 'mongoid'
 require 'rspec'
 require 'rspec/autorun'

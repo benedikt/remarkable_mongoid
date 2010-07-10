@@ -1,4 +1,4 @@
-# remarkable-mongoid
+# remarkable_mongoid
 RSpec Matchers for Mongoid
 
 ## Matchers
