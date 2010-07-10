@@ -13,7 +13,8 @@ describe 'Mongoid Associations' do
     before :all do
       class SingleBook
         include Mongoid::Associations
-        embeds_many :pages, :class_name => "SinglePage"
+        embeds_many :pages,  :class_name => "SinglePage"
+        embed_one   :author, :class_name => "SingleAuthor"
       end
       
       class SinglePage
@@ -21,8 +22,20 @@ describe 'Mongoid Associations' do
         embedded_in :book, :clas_name => "SingleBook", :inverse_of => :pages
       end
     end
+
+    describe 'embed_one' do
+      it 'should be true for a book embedding one author' do
+        matcher = @should.embed_one :author
+        matcher.matches?(SingleBook.new).should be_true
+      end
+      
+      it 'should be false for a book embedding one publisher' do
+        matcher = @should.embed_one :publisher
+        matcher.matches?(SingleBook.new).should be_false
+      end
+    end
     
-    describe 'embeds_many' do
+    describe 'embed_many' do
       it 'should be true for a book embedding many pages' do
         matcher = @should.embed_many :pages
         matcher.matches?(SingleBook.new).should be_true
@@ -52,7 +65,8 @@ describe 'Mongoid Associations' do
       class SingleOwner
         def self.set_callback(*args); end
         include Mongoid::Associations
-        references_many :dogs, :class_name => "SingleDog"
+        references_many :dogs,   :class_name => "SingleDog"
+        references_one  :friend, :class_name => "SingleFriend"
       end
       
       class SingleDog
@@ -62,6 +76,18 @@ describe 'Mongoid Associations' do
         include Mongoid::Fields
         include Mongoid::Associations
         referenced_in :owner, :clas_name => "SingleOwner", :inverse_of => :dogs
+      end
+    end
+
+    describe 'reference_one' do
+      it 'should be true for an owner having one friend' do
+        matcher = @should.reference_one :friend
+        matcher.matches?(SingleOwner.new).should be_true
+      end
+      
+      it 'should be false for an owner having one boss' do
+        matcher = @should.reference_one :boss
+        matcher.matches?(SingleOwner.new).should be_false
       end
     end
     

@@ -1,5 +1,9 @@
 module Remarkable::Mongoid
   module Matchers
+    def reference_one(attr)
+      AssociationMatcher.new(attr, ::Mongoid::Associations::ReferencesOne)
+    end
+    
     def reference_many(attr)
       AssociationMatcher.new(attr, ::Mongoid::Associations::ReferencesMany)
     end
@@ -8,6 +12,10 @@ module Remarkable::Mongoid
       AssociationMatcher.new(attr, ::Mongoid::Associations::ReferencedIn)
     end
 
+    def embed_one(attr)
+      AssociationMatcher.new(attr, ::Mongoid::Associations::EmbedsOne)
+    end
+    
     def embed_many(attr)
       AssociationMatcher.new(attr, ::Mongoid::Associations::EmbedsMany)
     end
@@ -29,6 +37,20 @@ module Remarkable::Mongoid
         a        = @subject.associations.select { |k,v| v.association == association_type }
         a.detect { |k| k.first == attr } != nil
       end
+
+      # def description
+      #   "has #{humanized_association} association :#{attr}"
+      # end
+      # 
+      # def failure_message_for_should
+      #   "\n#{humanized_association} association failure\nExpected: '#{attr}'"
+      # end
+      # 
+      # private
+      # 
+      # def humanized_association
+      #   association_type.to_s.split('::').last
+      # end
     end
   end
 end
