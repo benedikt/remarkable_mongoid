@@ -1,9 +1,13 @@
 require 'spec_helper'
 
-describe "RemarkableMongoid" do
+describe "Remarkable::Mongoid" do
   it 'should define Remarkable::Mongoid' do
-    expect {
-      Remarkable::Mongoid
-    }.to_not raise_error
+    defined?(Remarkable::Mongoid).should be_true
+  end
+end
+
+describe 'Remarkable::ActiveModel' do
+  it 'should include the Remarkable ActiveModel validation matchers' do
+    defined?(Remarkable::ActiveModel).should be_true
   end
 end

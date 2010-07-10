@@ -4,3 +4,4 @@ module Remarkable
 end
 
 require 'remarkable-mongoid/associations'
+require 'remarkable/active_model'
