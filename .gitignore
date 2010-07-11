@@ -15,6 +15,7 @@ tmtags
 
 ## BUNDLER
 Gemfile.lock
+.bundle/
 
 ## PROJECT::GENERAL
 coverage
