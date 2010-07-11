@@ -33,9 +33,9 @@ module Remarkable::Mongoid
       end
 
       def matches?(subject)
-        @subject = subject
-        a        = @subject.associations.select { |k,v| v.association == association_type }
-        a.detect { |k| k.first == attr } != nil
+        @subject     = subject
+        associations = @subject.associations.select { |k,v| v.association == association_type }
+        associations.detect { |k| k.first == attr } != nil
       end
 
       def description

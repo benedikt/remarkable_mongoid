@@ -40,7 +40,6 @@ module Remarkable::Mongoid
         "\nUniqueness validation failure\nExpected: '#{attr}' to be unique"
       end
       
-
     end
   end
 end
