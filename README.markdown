@@ -1,4 +1,6 @@
 # remarkable_mongoid
+NOTE: This gem is based upon the 2.0 beta of Mongoid and the 4.0 alpha of Remarkable
+
 RSpec Matchers for Mongoid
 
 ## Matchers
