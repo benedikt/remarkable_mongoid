@@ -13,6 +13,13 @@ begin
     gem.files       = Dir.glob("lib/**/*") + %w(LICENSE README.markdown)
     gem.test_files  = []
     gem.add_dependency 'remarkable_activemodel', '>=4.0.0.alpha2'
+
+    gem.add_development_dependency 'ruby-debug'
+    gem.add_development_dependency 'bson_ext'
+    gem.add_development_dependency 'activesupport', '3.0.0.beta4'
+    gem.add_development_dependency 'mongoid', '2.0.0.beta11'
+    gem.add_development_dependency 'rspec', '2.0.0.beta.17'
+    gem.add_development_dependency 'bourne', '1.0'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

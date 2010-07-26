@@ -73,9 +73,10 @@ describe 'Mongoid Associations' do
         def self.set_callback(*args); end
         def self.add_dirty_methods(*args); end
         def self.index(*args); end
+        def self.using_object_ids?; true; end
         include Mongoid::Fields
         include Mongoid::Associations
-        referenced_in :owner, :clas_name => "SingleOwner", :inverse_of => :dogs
+        referenced_in :owner, :class_name => "SingleOwner", :inverse_of => :dogs
       end
     end
 
