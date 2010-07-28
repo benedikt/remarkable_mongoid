@@ -5,7 +5,7 @@ module Remarkable::Mongoid
     end
     
     class ValidateUniquenessOfMatcher
-      attr_accessor :attr, :validation_type, :message
+      attr_accessor :attr, :validation_type, :message, :scope
 
       def initialize(attr)
         self.attr = attr.to_sym
@@ -15,18 +15,18 @@ module Remarkable::Mongoid
         self.message = message
         self
       end
+      
+      def scoped_to(scope)
+        self.scope = scope.to_sym
+        self
+      end
 
       def matches?(subject)
         @subject    = subject
         validations = @subject._validators[attr]
         if validations
           validation = validations.detect { |k| k.class == ::Mongoid::Validations::UniquenessValidator }
-
-          if validation && self.message
-            validation.options[:message] == self.message
-          else
-            validation != nil
-          end
+          validation && check_option(validation, :message) && check_option(validation, :scope)
         else
           false
         end
@@ -40,6 +40,16 @@ module Remarkable::Mongoid
         "\nUniqueness validation failure\nExpected: '#{attr}' to be unique"
       end
       
+      private
+      
+      def check_option(validation, option)
+        if self.send(option)
+          validation.options[option] == self.send(option)
+        else
+          true
+        end
+      end
     end
+    
   end
 end
