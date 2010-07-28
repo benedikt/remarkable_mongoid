@@ -50,6 +50,29 @@ describe 'Validates Uniqueness Of' do
         matcher.matches?(SingleBook.new).should be_false
       end
     end
+
+    context 'with scope and message' do
+      it 'should be true for a book validating the uniqueness with good scope and message' do
+        matcher = @should.validate_uniqueness_of(:title).scoped_to(:author_id).with_message('Test message')
+        matcher.matches?(SingleBook.new).should be_true
+      end
+      
+      it 'should be false for a book validating the uniqueness with good scope and bad message' do
+        matcher = @should.validate_uniqueness_of(:title).scoped_to(:author_id).with_message('Bad message')
+        matcher.matches?(SingleBook.new).should be_false
+      end
+
+      it 'should be false for a book validating the uniqueness with bad scope and good message' do
+        matcher = @should.validate_uniqueness_of(:title).scoped_to(:reader_id).with_message('Test message')
+        matcher.matches?(SingleBook.new).should be_false
+      end
+
+      it 'should be false for a book validating the uniqueness with bad scope and bad message' do
+        matcher = @should.validate_uniqueness_of(:title).scoped_to(:reader_id).with_message('Bad message')
+        matcher.matches?(SingleBook.new).should be_false
+      end
+    end
+
   end
   
   context 'messages' do
