@@ -7,6 +7,10 @@ module Remarkable::Mongoid
     def reference_many(attr)
       AssociationMatcher.new(attr, ::Mongoid::Associations::ReferencesMany)
     end
+
+    def reference_many_as_array(attr)
+      AssociationMatcher.new(attr, ::Mongoid::Associations::ReferencesManyAsArray)
+    end
     
     def be_referenced_in(attr)
       AssociationMatcher.new(attr, ::Mongoid::Associations::ReferencedIn)

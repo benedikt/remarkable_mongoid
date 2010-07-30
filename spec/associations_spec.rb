@@ -64,9 +64,14 @@ describe 'Mongoid Associations' do
     before :all do
       class SingleOwner
         def self.set_callback(*args); end
+        def self.add_dirty_methods(*args); end
+        def self.index(*args); end
+        def self.using_object_ids?; true; end
+        include Mongoid::Fields
         include Mongoid::Associations
-        references_many :dogs,   :class_name => "SingleDog"
-        references_one  :friend, :class_name => "SingleFriend"
+        references_many :dogs,    :class_name => "SingleDog"
+        references_many :turtles, :class_name => "SingleTurtle", :stored_as => :array
+        references_one  :friend,  :class_name => "SingleFriend"
       end
       
       class SingleDog
@@ -77,6 +82,15 @@ describe 'Mongoid Associations' do
         include Mongoid::Fields
         include Mongoid::Associations
         referenced_in :owner, :class_name => "SingleOwner", :inverse_of => :dogs
+      end
+
+      class SingleTurtle
+        def self.set_callback(*args); end
+        def self.add_dirty_methods(*args); end
+        def self.index(*args); end
+        def self.using_object_ids?; true; end
+        include Mongoid::Fields
+        include Mongoid::Associations
       end
     end
 
@@ -100,6 +114,21 @@ describe 'Mongoid Associations' do
       
       it 'should be false for an owner having many cats' do
         matcher = @should.reference_many :cats
+        matcher.matches?(SingleOwner.new).should be_false
+      end
+    end
+
+    describe 'reference_many_as_array' do
+      it 'should be true for an owner having many turtles as an array' do
+        matcher = @should.reference_many_as_array :turtles
+        matcher.matches?(SingleOwner.new).should be_true
+      end
+      it 'should be false for an owner having many dogs as an array' do
+        matcher = @should.reference_many_as_array :dogs
+        matcher.matches?(SingleOwner.new).should be_false
+      end
+      it 'should be false for an owner having many cats as an array' do
+        matcher = @should.reference_many_as_array :cats
         matcher.matches?(SingleOwner.new).should be_false
       end
     end
