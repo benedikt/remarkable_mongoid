@@ -10,11 +10,15 @@ describe 'Validates Uniqueness Of' do
   end
   
   describe 'validate_uniqueness_of' do
-    before :all do
+    before do
       class SingleBook
         include Mongoid::Validations
         validates_uniqueness_of :title, :message => 'Test message', :scope => :author_id
       end
+    end
+    
+    after do
+      Object.send(:remove_const, :SingleBook)
     end
 
     it 'should be true for a book validating the uniqueness of title' do
