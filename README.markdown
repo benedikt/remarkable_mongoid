@@ -17,6 +17,7 @@ Associations
 Validations
 
 * validate_uniqueness_of
+* validate_association
 * All ActiveModel validations from [Remarkable::ActiveModel](http://github.com/remarkable/remarkable/tree/master/remarkable_activemodel)
 
 ## Installation
