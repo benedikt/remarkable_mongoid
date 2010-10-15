@@ -14,6 +14,7 @@ describe 'Validates Uniqueness Of' do
       class SingleBook
         include Mongoid::Validations
         validates_uniqueness_of :title, :message => 'Test message', :scope => :author_id
+        validates_uniqueness_of :price, :scope => [:store_id, :shelf_id]
       end
     end
     
@@ -52,6 +53,11 @@ describe 'Validates Uniqueness Of' do
       it 'should be false for a book validating the uniqueness scoped_to reader_id' do
         matcher = @should.validate_uniqueness_of(:title).scoped_to(:reader_id)
         matcher.matches?(SingleBook.new).should be_false
+      end
+
+      it 'should be true for a book validating the uniqueness scoped_to [:store_id, :shelf_id]' do
+        matcher = @should.validate_uniqueness_of(:price).scoped_to([:store_id, :shelf_id])
+        matcher.matches?(SingleBook.new).should be_true
       end
     end
 

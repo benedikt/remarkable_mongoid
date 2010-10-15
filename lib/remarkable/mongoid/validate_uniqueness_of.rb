@@ -17,7 +17,7 @@ module Remarkable::Mongoid
       end
       
       def scoped_to(scope)
-        self.scope = scope.to_sym
+        self.scope = scope.is_a?(Array) ? scope.map(&:to_sym) : scope.to_sym
         self
       end
 
