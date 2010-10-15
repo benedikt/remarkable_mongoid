@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Brian Cardarella"]
-  s.date = %q{2010-08-01}
+  s.date = %q{2010-10-15}
   s.description = %q{RSpec Matchers for Mongoid}
   s.email = %q{bcardarella@gmail.com}
   s.extra_rdoc_files = [
@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
      "README.markdown",
      "lib/remarkable/mongoid.rb",
      "lib/remarkable/mongoid/associations.rb",
+     "lib/remarkable/mongoid/fields.rb",
      "lib/remarkable/mongoid/validate_association.rb",
      "lib/remarkable/mongoid/validate_uniqueness_of.rb"
   ]

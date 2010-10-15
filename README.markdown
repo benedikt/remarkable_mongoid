@@ -5,6 +5,10 @@ RSpec Matchers for Mongoid
 
 ## Matchers
 
+Fields
+
+* have_field
+
 Associations
 
 * reference_one
